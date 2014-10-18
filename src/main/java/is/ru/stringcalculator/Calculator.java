@@ -5,8 +5,23 @@ public class Calculator {
 	public static int add(String text){
 		if(text.startsWith("//")){
 			String temp = text.substring(2,3);
-			text = text.replace(temp, ",");
-			text = text.substring(4);
+			if(temp.charAt(0) == '['){
+				String tempMany = "";
+				int subStringLength = 0;
+				for(int i = 3; i < text.length(); i++)
+				{
+					if(text.charAt(i) == ']'){
+						tempMany = text.substring(3,i);
+						subStringLength = i;
+					}
+				}
+				text = text.replace(tempMany, ",");
+				text = text.substring(subStringLength);
+			}
+			else{
+				text = text.replace(temp, ",");
+				text = text.substring(4);
+			}
 		}
 		if(text.equals("")){
 			return 0;
