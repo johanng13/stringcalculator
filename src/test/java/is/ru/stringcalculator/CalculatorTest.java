@@ -49,16 +49,6 @@ public class CalculatorTest {
         assertEquals(10, Calculator.add("//;\n1;2,3\n4"));
     }
 
-    /*@Test
-    public void testNegativeNumberException(){
-        assertEquals("Negatives not allowed: -1", Calculator.hasNegative("-1,2"));
-    }
-
-    @Test
-    public void testNegativeNumberExceptionMoreThanOne(){
-        assertEquals("Negatives not allowed: -4,-5", Calculator.hasNegative("2,-4,3,-5"));
-    }*/
-
     @Test
     public void testNumberBiggerThan1000(){
         assertEquals(3, Calculator.add("1,2,1001"));
@@ -72,6 +62,11 @@ public class CalculatorTest {
     @Test
     public void testMultipleDelimiter(){
         assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+    }
+
+    @Test
+    public void testMultipleDelimiterMoreThanTwo(){
+        assertEquals(10, Calculator.add("//[*][%][#]\n1*2%3#4"));
     }
 
 }
