@@ -4,24 +4,7 @@ public class Calculator {
 
 	public static int add(String text){
 		if(text.startsWith("//")){
-			String temp = text.substring(2,3);
-			if(temp.charAt(0) == '['){
-				String tempMany = "";
-				int subStringLength = 0;
-				for(int i = 3; i < text.length(); i++)
-				{
-					if(text.charAt(i) == ']'){
-						tempMany = text.substring(3,i);
-						subStringLength = i;
-					}
-				}
-				text = text.replace(tempMany, ",");
-				text = text.substring(subStringLength);
-			}
-			else{
-				text = text.replace(temp, ",");
-				text = text.substring(4);
-			}
+			text = delimiters(text);
 		}
 		if(text.equals("")){
 			return 0;
@@ -43,6 +26,28 @@ public class Calculator {
 
 	private static String[] splitNumbers(String numbers){
 	    return numbers.split(",");
+	}
+
+	private static String delimiters(String text){
+		String temp = text.substring(2,3);
+			if(temp.charAt(0) == '['){
+				String tempMany = "";
+				int subStringLength = 0;
+				for(int i = 3; i < text.length(); i++)
+				{
+					if(text.charAt(i) == ']'){
+						tempMany = text.substring(3,i);
+						subStringLength = i;
+					}
+				}
+				text = text.replace(tempMany, ",");
+				text = text.substring(subStringLength);
+			}
+			else{
+				text = text.replace(temp, ",");
+				text = text.substring(4);
+			}
+			return text;
 	}
       
     private static int sum(String[] numbers){
