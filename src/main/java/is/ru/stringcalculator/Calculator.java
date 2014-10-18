@@ -31,17 +31,25 @@ public class Calculator {
 	private static String delimiters(String text){
 		String temp = text.substring(2,3);
 			if(temp.charAt(0) == '['){
-				String tempMany = "";
-				int subStringLength = 0;
-				for(int i = 3; i < text.length(); i++)
-				{
-					if(text.charAt(i) == ']'){
-						tempMany = text.substring(3,i);
-						subStringLength = i;
-					}
+				String tempMulti = text.substring(4,6);
+				if(tempMulti.charAt(0) == ']' && tempMulti.charAt(1) == '['){
+					text = text.replace(text.substring(3,4), ",");
+					text = text.replace(text.substring(6,7), ",");
+					text = text.substring(9);
 				}
-				text = text.replace(tempMany, ",");
-				text = text.substring(subStringLength);
+				else{
+					String tempMany = "";
+					int subStringLength = 0;
+					for(int i = 3; i < text.length(); i++)
+					{
+						if(text.charAt(i) == ']'){
+							tempMany = text.substring(3,i);
+							subStringLength = i;
+						}
+					}
+					text = text.replace(tempMany, ",");
+					text = text.substring(subStringLength);
+				}
 			}
 			else{
 				text = text.replace(temp, ",");
