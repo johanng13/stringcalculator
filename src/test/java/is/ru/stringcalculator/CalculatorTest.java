@@ -49,14 +49,19 @@ public class CalculatorTest {
         assertEquals(10, Calculator.add("//;\n1;2,3\n4"));
     }
 
-    @Test
+    /*@Test
     public void testNegativeNumberException(){
-        assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+        assertEquals("Negatives not allowed: -1", Calculator.hasNegative("-1,2"));
     }
 
     @Test
     public void testNegativeNumberExceptionMoreThanOne(){
-        assertEquals("Negatives not allowed: -4,-5", Calculator.add("2,-4,3,-5"));
+        assertEquals("Negatives not allowed: -4,-5", Calculator.hasNegative("2,-4,3,-5"));
+    }*/
+    
+    @Test
+    public void testNumberBiggerThan1000(){
+        assertEquals(3, Calculator.add("1,2,1001"));
     }
 
 }
