@@ -11,10 +11,10 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		if(containing("\n")){
+		if(text.contains("\n")){
 			text = text.replace("\n", ",");
 		}
-		if(containing(",")){
+		if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
 		else{
@@ -28,18 +28,6 @@ public class Calculator {
 
 	private static String[] splitNumbers(String numbers){
 	    return numbers.split(",");
-	}
-
-	private static boolean containing(String seperate){
-		if(seperate.contains(",")){
-			return true;
-		}
-		if(seperate.contains("\n")){
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
       
     private static int sum(String[] numbers){
