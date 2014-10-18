@@ -3,8 +3,10 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
-		if(text == "//;\n1;2"){
-			return 3;
+		if(text.startsWith("//")){
+			String temp = text.substring(2,3);
+			text = text.replace(temp, ",");
+			text = text.substring(4);
 		}
 		if(text.equals("")){
 			return 0;
